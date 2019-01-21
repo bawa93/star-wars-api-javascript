@@ -1,0 +1,29 @@
+
+.bg-image {
+    background-image: url('../assets/img-noise-361x370.png');
+}
+
+.hidden {
+  display: none;
+
+}
+
+.hero-section {
+  margin: 40px 0;
+}
+
+.movie__title {
+  margin-top: 20px;
+}
+.movie__details {
+    margin: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.movie__detail-item {
+    border-bottom: 1px solid rgba(238, 238, 238, 0.2901960784313726);
+    padding-bottom: 7px;
+}
+.movie__opening-crawl-title {
+    margin-top: 20px;
+}
