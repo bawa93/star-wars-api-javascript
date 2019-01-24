@@ -9,11 +9,9 @@
                 const url = 'https://swapi.co/api/people/';
 
                 var currentObj = this;
-                fetch(url)
-                    .then((resp) => resp.json())
+                axios.get(url)
                     .then(function (data) {
-                        var charactors = data.results;
-
+                        var charactors = data.data.results;
                         var filtered_chars = charactors.filter(function (element) { // searching the characters if they match a searched term
                             if (search_term != '') {
                                 return element.name.toLowerCase().indexOf(search_term) == -1 ? false : true;
@@ -39,7 +37,7 @@
                 <article class="media">
                     <div class="media-left">
                         <figure class="image is-64x64" style="overflow: hidden;">
-                            <img src="assets/charactors/${element.name.replace(' ', '_').toLowerCase()}.png" alt="Image" class="image">
+                            <img src="assets/charactors/${element.name.replace(' ', '_').toLowerCase()}.png" alt="Image" class="image animated flash delay-2s">
                         </figure>
                     </div>
                     <div class="media-content">
@@ -86,9 +84,10 @@
                 var movie_id = url_parts_array[5];
 
                 var currentObj = this;
-                fetch(url)
-                    .then((resp) => resp.json())
+                axios.get(url)
+                    
                     .then(function (data) {
+                        data = data.data;
                         document.getElementById("search__results").classList.remove("is-half");
                         if (document.contains(document.getElementById("first_col"))) {
                             document.getElementById("first_col").remove();
@@ -110,7 +109,7 @@
                 <div class="column movie">
                     <div class="columns">
                         <div class="column">
-                            <img src="assets/movies/${ movie_id }.jpg" class="image">
+                            <img src="assets/movies/${ movie_id }.jpg" class="image animated shake delay-2s">
                         </div>
                         <div class="column is-two-thirds">
                             <h1 class="is-size-3 movie__title">${data.title}</h1>
@@ -174,29 +173,23 @@
 
     // navbar
 
-    document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
 
-        // Get all "navbar-burger" elements
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            // Get all "navbar-burger" elements
+            var navBurger = document.querySelector('.navbar-burger');
 
-        // Check if there are any navbar burgers
-        if ($navbarBurgers.length > 0) {
+                    navBurger.addEventListener('click', (e) => {
 
-            // Add a click event on each of them
-            $navbarBurgers.forEach(el => {
-                el.addEventListener('click', () => {
+                        // Get the target from the "data-target" attribute
+                        var target_el = e.currentTarget.getAttribute('data-target');
+                        const target = document.getElementById(target_el);
 
-                    // Get the target from the "data-target" attribute
-                    const target = el.dataset.target;
-                    const $target = document.getElementById(target);
+                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                        navBurger.classList.toggle('is-active');
+                        target.classList.toggle('is-active');
+                    });
+                
 
-                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                    el.classList.toggle('is-active');
-                    $target.classList.toggle('is-active');
+        });
 
-                });
-            });
-        }
-
-    });
 })();
