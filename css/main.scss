@@ -1,13 +1,16 @@
+$primaryColor: #FFE300;
+
 html {
     scroll-behavior: smooth;
 }
 
 .bg-image {
-    background-image: url("../assets/img-noise-361x370.png");
+    background-image: url('../assets/img-noise-361x370.png');
 }
 
 .hidden {
     display: none;
+
 }
 
 .hero-section {
@@ -17,43 +20,49 @@ html {
     padding: 35px 0;
 }
 
-.movie__title {
-    margin-top: 20px;
+
+.movie {
+    &__title {
+        margin-top: 20px;
+    }
+
+    &__details {
+        margin: 10px 0;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    &__detail-item {
+        border-bottom: 1px solid rgba(238, 238, 238, 0.2901960784313726);
+        padding-bottom: 7px;
+    }
+
+    &__opening-crawl-title {
+        margin-top: 20px;
+    }
 }
 
-.movie__details {
-    margin: 10px 0;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.movie__detail-item {
-    border-bottom: 1px solid rgba(238, 238, 238, 0.2901960784);
-    padding-bottom: 7px;
-}
-
-.movie__opening-crawl-title {
-    margin-top: 20px;
-}
+.movie__details {}
 
 .navbar-logo {
-    color: #FFE300;
+    color: $primaryColor;
     font-weight: bold;
     font-size: 24px;
 }
+
 
 .hero-image {
     max-width: 350px;
 }
 
-@media all and (max-width: 728px) {
+@media all and (max-width:728px) {
     .hero-image {
         max-width: 100%;
     }
 }
 
 .footer-class {
-    background-color: #FFE300;
+    background-color: $primaryColor;
     padding: 15px;
     color: black;
     font-weight: bold;
